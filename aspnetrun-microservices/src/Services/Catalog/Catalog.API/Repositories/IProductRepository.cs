@@ -21,5 +21,6 @@ namespace Catalog.API.Repositories
         Task<bool> DeleteProductAsync(string id);
 
 
+
     }
 }
