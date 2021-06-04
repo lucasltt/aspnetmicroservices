@@ -24,7 +24,7 @@ namespace Discount.Grpc.Services
             _mapper = mapper;
         }
 
-        public override async Task<CouponModel> GetDiscountAsync(GetDiscountRequest request, ServerCallContext context)
+        public override async Task<CouponModel> GetDiscount(GetDiscountRequest request, ServerCallContext context)
         {
             Coupon coupon = await _repository.GetDiscountAsync(request.ProductName);
             if(coupon == null)
@@ -37,7 +37,7 @@ namespace Discount.Grpc.Services
             return couponModel;
         }
 
-        public override async Task<CouponModel> CreateDiscountAsync(CreateDiscountRequest request, ServerCallContext context)
+        public override async Task<CouponModel> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
         {
             Coupon coupon = _mapper.Map<Coupon>(request.Coupon);
             bool result = await _repository.CreateDiscountAsync(coupon);
@@ -51,7 +51,7 @@ namespace Discount.Grpc.Services
             return couponModel;
         }
 
-        public override async Task<DeleteDiscountResponse> DeleteDiscountAsync(DeleteDiscountRequest request, ServerCallContext context)
+        public override async Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
         {
           
             bool result = await _repository.DeleteDiscountAsync(request.ProductName);
@@ -68,7 +68,7 @@ namespace Discount.Grpc.Services
             };
         }
 
-        public override async Task<CouponModel> UpdateDiscountAsync(UpdateDiscountRequest request, ServerCallContext context)
+        public override async Task<CouponModel> UpdateDiscount(UpdateDiscountRequest request, ServerCallContext context)
         {
             Coupon coupon = _mapper.Map<Coupon>(request.Coupon);
             bool result = await _repository.UpdateDiscountAsync(coupon);
